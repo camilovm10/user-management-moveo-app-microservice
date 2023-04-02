@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-management
+spec:
+  selector:
+    matchLabels:
+      app: manage
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: manage
+    spec:
+      containers:
+        - name: user-management
+          image: icr.io/moveo-app/user-management:v1
+          ports:
+            - containerPort: 5000
