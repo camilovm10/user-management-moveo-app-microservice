@@ -3,6 +3,7 @@ import models
 from router import router
 from config import engine
 from fastapi.middleware.cors import CORSMiddleware
+from mangum import Mangum
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -18,3 +19,4 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+handler = Mangum(app)
